@@ -1,0 +1,89 @@
+﻿<mah:MetroWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:viewModels="clr-namespace:MonteCarloMethod.ViewModels"
+                 x:Class="Monte_Carlo_Method.MainWindow"
+                 mc:Ignorable="d"
+                 Title="Monte Carlo Method [V.0.2a]"
+                 TitleCharacterCasing="Normal"
+                 Height="450" Width="650"
+                 Background="{DynamicResource WindowBackgroundBrush}" 
+                 WindowStartupLocation="CenterScreen" 
+                 ResizeMode="CanMinimize">
+
+    <mah:MetroWindow.DataContext>
+        <viewModels:MainViewModel/>
+    </mah:MetroWindow.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Параметры алгоритма" Margin="5" mah:ControlsHelper.ContentCharacterCasing="Normal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock Margin="5" Text="Линии фигуры:"/>
+                    <TextBox Margin="50, 0, 5, 5"
+                             Text="{Binding MyMainModel.Functions}" 
+                             FontSize="14" 
+                             FontWeight="Bold"
+                             mah:TextBoxHelper.ClearTextButton="True"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Margin="5, 5, 5, 0" Text="Введите интервал фигуры (a, b, c, d):"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="50, 0, 0, 0">
+                        <mah:NumericUpDown Margin="5" Value="{Binding MyMainModel.A}" HideUpDownButtons="True" ToolTip="a" TextAlignment="Center"/>
+                        <mah:NumericUpDown Margin="5" Value="{Binding MyMainModel.B}" HideUpDownButtons="True" ToolTip="b" TextAlignment="Center"/>
+                        <mah:NumericUpDown Margin="5" Value="{Binding MyMainModel.C}" HideUpDownButtons="True" ToolTip="c" TextAlignment="Center"/>
+                        <mah:NumericUpDown Margin="5" Value="{Binding MyMainModel.D}" HideUpDownButtons="True" ToolTip="d" TextAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock Margin="5" Text="Количество итераций:"/>
+                    <mah:NumericUpDown Margin="50, 0, 5, 5" 
+                                       Value="{Binding MyMainModel.IterationCount}" 
+                                       mah:TextBoxHelper.Watermark="Введите количество итераций..." 
+                                       TextAlignment="Center"
+                                       Minimum="10"
+                                       ParsingNumberStyle="Integer"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3">
+                    <TextBlock Margin="5" Text="Точное значение:"/>
+                    <mah:NumericUpDown Margin="50, 0, 5, 5" 
+                                       Value="{Binding MyMainModel.ExValue}" 
+                                       mah:TextBoxHelper.Watermark="Введите точное значачение..." 
+                                       TextAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <ProgressBar Grid.Row="3" Margin="5" Value="{Binding MyMainModel.Progress}"/>
+
+        <Border Grid.Row="4" Margin="5" BorderBrush="{DynamicResource AccentBaseColorBrush}" BorderThickness="1">
+            <TextBlock Margin="5" Text="{Binding MyMainModel.Answer}" FontWeight="Bold" FontSize="16"/>
+        </Border>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="35" Width="220">
+            <Button Margin="5" Content="Начать" Command="{Binding BStartCommand}" Style="{DynamicResource DarkMetroWindowButtonStyle}" Width="100" Height="25"/>
+            <Button IsEnabled="False" Margin="5" Content="Остановить" Style="{DynamicResource DarkMetroWindowButtonStyle}" Width="100" Height="25"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>
