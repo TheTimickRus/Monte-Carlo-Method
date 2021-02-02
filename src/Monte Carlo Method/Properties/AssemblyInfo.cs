@@ -8,11 +8,11 @@ using System.Windows;
 // набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("Monte Carlo Method")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Monte Carlo Method")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("© Timick")]
 [assembly: AssemblyProduct("Monte Carlo Method")]
-[assembly: AssemblyCopyright("Copyright © Timick 2019")]
+[assembly: AssemblyCopyright("Copyright © Timick 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.2.0.0")]
-[assembly: AssemblyFileVersion("0.2.0.0")]
+[assembly: AssemblyVersion("0.3.0.0")]
+[assembly: AssemblyFileVersion("0.3.0.0")]
